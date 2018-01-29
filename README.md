@@ -2,10 +2,10 @@
 
 This utility scirpts are developed for computing the cost for localizing a bug in the program. 
 
-Suppose we have this file ready to use for a subject program: 
-1) total number of imstruments,  and the buggy instrument
-2) a test suite and traces of each test case
-3) status of each test case
+Suppose we have these files ready to use for a subject program: 
+1) status-file: the status of each test case
+2) traces_file: the traces of each test case 
+3) instrument_file: total number of imstruments,  and the buggy instrument
 
 
 The usage of this scripts: 
