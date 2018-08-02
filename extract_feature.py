@@ -64,8 +64,8 @@ def extract_feature(comb1, comb2, comb3, line):
     for i in xrange(0, len(all)):
         for j in xrange(i+1, len(all)):
             for k in xrange(j+1, len(all)):
+                fea = "{},{},{}".format(all[i], all[j], all[k])
                 if fea in dict3:
-                    fea = "{},{},{}".format(all[i], all[j], all[k])
                     dict3[fea] = dict3[fea] + 1
 
     return dict1, dict2, dict3
