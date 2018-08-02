@@ -1,7 +1,19 @@
+import sys
 from utility import read_file, write_file
 
 
-def main(traces_path, comb1_path, comb2_path, comb3_path):
+def main():
+    if len(sys.argv) < 4:
+        print "usage: python extract_feature.py [traces_file_path] [comb1_path] [comb2_path] [comb3_path]"
+        return
+    traces_path = sys.argv[1]
+    comb1_path = sys.argv[2]
+    comb2_path = sys.argv[3]
+    comb3_path = sys.argv[4]
+    generate(traces_path, comb1_path, comb2_path, comb3_path)
+
+
+def generate(traces_path, comb1_path, comb2_path, comb3_path):
     comb1, comb2, comb3 = extract_dict(traces_path)
     traces = read_file(traces_path).split('\n')
     ret1 = []
