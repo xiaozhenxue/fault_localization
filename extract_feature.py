@@ -51,7 +51,7 @@ def extract_feature(comb1, comb2, comb3, line):
     dict2 = dict.fromkeys(comb2, 0)
     dict3 = dict.fromkeys(comb3, 0)
     all = line.split(":")[1].split(",")
-    all = [int(e) for e in all if e is not '']
+    all = [int(e) for e in all if cast_to_int(e)]
     for i in xrange(0, len(all)):
         fea = "{}".format(all[i])
         if fea in dict1:
@@ -71,6 +71,14 @@ def extract_feature(comb1, comb2, comb3, line):
     return dict1, dict2, dict3
 
 
+def cast_to_int(e):
+    try:
+        int(e)
+        return True
+    except Exception:
+        return False
+
+
 def extract_dict(traces_path):
     traces = read_file(traces_path).split('\n')
     comb1 = set()
@@ -78,9 +86,8 @@ def extract_dict(traces_path):
     comb3 = set()
     for line in traces:
         if line is not '':
-            print line
             all = line.split(":")[1].split(",")
-            all = [int(e) for e in all if e is not '']
+            all = [int(e) for e in all if cast_to_int(e)]
             comb1 |= get_comb1(all)
             comb2 |= get_comb2(all)
             comb3 |= get_comb3(all)
